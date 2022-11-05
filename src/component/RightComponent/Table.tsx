@@ -15,25 +15,6 @@ export default function Table() {
         padding: '20px 12px 12px'
     })
 
-    const TableTh = styled.div({
-        color: '#fff',
-        fontSize: '15px',
-        fontWeight: '500'
-    });
-
-    const TableTd = styled.td({
-        color: '#87a3b7',
-        fontSize: '15px',
-        fontWeight: '400',
-        padding: '20px 12px 12px'
-    });
-
-    const SpanStyled = styled.span({
-        fontSize: '21px',
-        color: '#fff',
-        fontWeight: 500
-    })
-
     const animateValue = (obj: any, start: number, end: number, duration: number) => {
         let startTimestamp: any = null;
         const step = (timestamp: any) => {
@@ -47,14 +28,16 @@ export default function Table() {
         window.requestAnimationFrame(step);
     }
 
- 
+
     useEffect(() => {
         let newTotal = 0
         const obj = document.getElementById("total");
         categoryList.state.map((i: any) => {
-            if (i.status == true) {
-                i.tableData.map((data: any) => {
-                    if (data.type == "discount") {
+            // eslint-disable-next-line no-use-before-define
+            if (i.status === true) {
+                return i.tableData.forEach((data: any) => {
+                    // eslint-disable-next-line no-use-before-define
+                    if (data.type === "discount") {
                         animateValue(obj, newTotal, newTotal - data.amount, 1000);
                         newTotal = newTotal - data.amount
                         // console.log('discpount', newTotal)
@@ -65,6 +48,8 @@ export default function Table() {
                     }
                 })
             }
+            return 0
+
         })
         setTotal(newTotal)
     }, [categoryList])

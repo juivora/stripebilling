@@ -10,14 +10,16 @@ export default function ThingsList(props: any) {
     const [isActive, setActive] = useState(false);
     const [data, setData] = useState(a.state)
 
-    useEffect(() => {
+    /* eslint-disable */
+    useEffect(() => {        
         a.update(data)
     }, [data]);
+     /* eslint-enable */
 
     const toggleClass = () => {
         setActive(!isActive);
         const newState = a.state.map((obj: any, index: any) => {
-            if (index == props.index) {
+            if (index === props.index) {
                 return { ...obj, status: !isActive };
             }
             return obj;
@@ -44,7 +46,7 @@ export default function ThingsList(props: any) {
 
 
     return <li>
-        <a
+        <span
             className={isActive ? 'm-active nav-link' : "nav-link"}
             onClick={toggleClass}
             data-toggle="tab"
@@ -67,7 +69,7 @@ export default function ThingsList(props: any) {
             <SubHeader>
                 {props.description}
             </SubHeader>
-        </a>
+        </span>
     </li>
 
 }

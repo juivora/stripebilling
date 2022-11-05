@@ -14,15 +14,15 @@ export default function TableRow(props: any) {
                         {props.data.qty}
                     </div>
                     <div className="text-[#87a3b7] text-[15px] font-normal pt-4 pr-4 pb-4">
-                        {props.data.price != '' &&
+                        {props.data.price !== '' &&
                             `$ ${props.data.price}`
                         }
                     </div>
                     <div className="text-[#87a3b7] text-[15px] text-right font-normal pt-4 pr-4 pb-4">
                        
-                        {props.data.type == "discount" ?
+                        {props.data.type === "discount" ?
                             `-$ ${props.data.amount}` :
-                            props.data.amount != '' &&
+                            props.data.amount !== '' &&
                             `$ ${props.data.amount}`
                         }
                     </div>
